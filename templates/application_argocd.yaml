@@ -13,32 +13,8 @@ spec:
   source:
     chart: argo-cd
     helm:
-      parameters:
-        - name: installCRDs
-          value: "true"
-        - name: server.extraArgs
-          value: "--insecure"
-        - name: server.config.url
-          value: https://argocd.glados.thorstensauter.dev
-        - name: server.config.oidc.config
-          value: |
-            name: Azure
-            issuer: https://login.microsoftonline.com/ffab38df-cddf-433f-859a-6cfa161a5ceb/v2.0
-            clientID: c5749e21-b7de-4937-8a96-8956493381aa
-            clientSecret: $oidc.azure.clientSecret
-            requestedIDTokenClaims: {"groups": {"essential": true}}
-            requestedScopes: ["openid", "profile", "email"]
-        - name: rbac.policy.default
-          value: role:readonly
-        - name: rbac.policy.csv
-          value: |
-            p, role:org-admin, applications, *, */*, allow
-            p, role:org-admin, clusters, get, *, allow
-            p, role:org-admin, repositories, get, *, allow
-            p, role:org-admin, repositories, create, *, allow
-            p, role:org-admin, repositories, update, *, allow
-            p, role:org-admin, repositories, delete, *, allow
-            g, "b6a3cbf9-3742-47d3-9a72-1ee3fdeb71ee", role:org-admin     
+      valueFiles:
+        - ../values/argocd.yaml
     repoURL: https://argoproj.github.io/argo-helm
     targetRevision: v5.9.0
   syncPolicy:
