@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: argo-cd
   namespace: argocd
   labels:
-    name: argocd
+    name: argo-cd
 spec:
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: argocd
+    chart: argo-cd
     helm:
       parameters:
         - name: installCRDs
@@ -40,7 +40,7 @@ spec:
             p, role:org-admin, repositories, delete, *, allow
             g, "b6a3cbf9-3742-47d3-9a72-1ee3fdeb71ee", role:org-admin     
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: 1.12.1
+    targetRevision: v5.9.0
   syncPolicy:
     automated: {}
     syncOptions:
