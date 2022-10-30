@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: traefik
     server: https://kubernetes.default.svc
-  project: infrastructure
+  project: default
   source:
     chart: traefik
     helm:

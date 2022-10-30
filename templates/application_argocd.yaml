@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
-  project: infrastructure
+  project: default
   source:
     chart: argocd
     helm:
@@ -44,9 +44,7 @@ spec:
             p, role:org-admin, repositories, create, *, allow
             p, role:org-admin, repositories, update, *, allow
             p, role:org-admin, repositories, delete, *, allow
-            g, "b6a3cbf9-3742-47d3-9a72-1ee3fdeb71ee", role:org-admin
-              - name: 
-                value:       
+            g, "b6a3cbf9-3742-47d3-9a72-1ee3fdeb71ee", role:org-admin     
     repoURL: https://argoproj.github.io/argo-helm
     targetRevision: v1.12.1
   syncPolicy:
