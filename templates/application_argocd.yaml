@@ -17,8 +17,7 @@ spec:
         - name: installCRDs
           value: "true"
         - name: server.extraArgs
-          value:
-            - --insecure
+          value: "--insecure"
         - name: server.config.url
           value: https://argocd.glados.thorstensauter.dev
         - name: server.config.oidc.config
