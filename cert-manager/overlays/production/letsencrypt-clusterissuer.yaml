@@ -7,15 +7,10 @@ spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: thorsten.sauter@gmail.com
-    privateKeySecretRef:
-      name: letsencrypt-production
     solvers:
       - dns01:
           cloudflare:
             email: thorsten.sauter@gmail.com
-            apiTokenSecretRef:
-              name: cloudflare-api-token-secret
-              key: api-token
         selector:
           dnsZones:
             - "thorstensauter.dev"

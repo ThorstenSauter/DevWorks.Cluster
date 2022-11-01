@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  url: https://argocd.glados.thorstensauter.dev
+  oidc.config: |
+    name: Azure
+    issuer: https://login.microsoftonline.com/ffab38df-cddf-433f-859a-6cfa161a5ceb/v2.0
+    clientID: c5749e21-b7de-4937-8a96-8956493381aa
+    clientSecret: $oidc.azure.clientSecret
+    requestedIDTokenClaims:
+        groups:
+          essential: true
+    requestedScopes:
+        - openid
+        - profile
+        - email
